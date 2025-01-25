@@ -1,0 +1,17 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+
+body{
+    background-color: #fffceb ;
+}
+.fondoNav{
+
+    background-color: #ebf3e7;
+
+}
+
+footer{
+    text-align: center;
+}
