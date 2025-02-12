@@ -1,163 +1,189 @@
-*{
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-}
-.fondoNav{
-    background-color: #ebf3e7;
-}
-.fondoBariloche{
-    
-    background-image: url(../imagenes/bariloche/sacamoto.jpeg);
-    background-size: cover;
-}
-.barilocheH1{
-    text-align: center;
-    color: #4a5844;
-}
-.barilocheSubHacer{
-    color: #46553e;
-}
-.barilocheSubEsquiar{
-    color: #46553e;
-}
-.barilocheSubNaturaleza{
-    color: #46553e;
-}
-.contenidoBariloche{
-    display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: repeat(3, 1fr);
-    color: black;
-}
-.imgBariloche{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
+.fondoNav {
+  background-color: #ebf3e7;
 }
 
-.fondoCalafate{
-    background-image: url(../imagenes/calafate/fondocalafate.jpeg);
-    background-size: cover;
-}
-.calafateH1{
-    text-align: center;
-    color: #4a5844;
-}
-.calafateSubHacer{
-    color: #46553e;
-}
-.calafateSubGlaciar{
-    color: #46553e;
-}
-.calafateSubLagos{
-    color: #46553e;
-}
-.calafateSubBosques{
-    color: #46553e;
-}
-.contenidoCalafate{
-    display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: repeat(3, 1fr);
-    color: black;
-}
-.imgCalafate{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-.fondoIguazu{
-    
-    background-image: url(../imagenes/iguazu/iguazufondo2.jpeg);
-    background-size: cover;
-}
-.iguazuH1{
-    text-align: center;
-    color: #4a5844;
-}
-.iguazuSubHacer{
-    color: #46553e;
-}
-.iguazuSubRuinas{
-    color: #46553e;
-}
-.iguazuSubParque{
-    color: #46553e;
-}
-.contenidoIguazu{
-    display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: repeat(3, 1fr);
-    color: black;
-}
-.imgIguazu{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-.fondoCosta{
-    
-    background-image: url(../imagenes/costa/costafondodinal.jpeg);
-    background-size: cover;
-}
-.costaH1{
-    text-align: center;
-    color: black;
-}
-.costaSubHacer{
-    color: black;
-}
-.costaSubCentro{
-    color: black;
+.fondoBariloche {
+  background-image: url(../imagenes/bariloche/sacamoto.jpeg);
+  background-size: cover;
 }
 
-.contenidoCosta{
-    display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: repeat(3, 1fr);
-    color: black;
-}
-.imgCosta{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-main H1{
-    text-align: center;
-}
-.viaje{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 20px;
+.barilocheH1 {
+  text-align: center;
+  color: #4a5844;
 }
 
-@media screen and (max-width: 600px){ 
-    .imgBariloche{
-        display: block;
-    }
-    .imgCalafate{
-        display: block;
-    }
-    .imgCosta{
-        display: block;
-    }
-    .imgIguazu{
-        display: block;
-    }
-    .viaje{
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
-    }
-    
+.barilocheSubHacer {
+  color: #46553e;
 }
 
-
-
-
-
-
-footer{
-    margin-top: 20px;
-    text-align: center;
+.barilocheSubEsquiar {
+  color: #46553e;
 }
+
+.barilocheSubNaturaleza {
+  color: #46553e;
+}
+
+.contenidoBariloche {
+  color: black;
+}
+
+.imgBariloche {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fondoCalafate {
+  background-image: url(../imagenes/calafate/fondocalafate.jpeg);
+  background-size: cover;
+}
+
+.calafateH1 {
+  text-align: center;
+  color: #4a5844;
+}
+
+.calafateSubHacer {
+  color: #46553e;
+}
+
+.calafateSubGlaciar {
+  color: #46553e;
+}
+
+.calafateSubLagos {
+  color: #46553e;
+}
+
+.calafateSubBosques {
+  color: #46553e;
+}
+
+.contenidoCalafate {
+  color: black;
+}
+
+.imgCalafate {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fondoIguazu {
+  background-image: url(../imagenes/iguazu/iguazufondo2.jpeg);
+  background-size: cover;
+}
+
+.iguazuH1 {
+  text-align: center;
+  color: #4a5844;
+}
+
+.iguazuSubHacer {
+  color: #46553e;
+}
+
+.iguazuSubRuinas {
+  color: #46553e;
+}
+
+.iguazuSubParque {
+  color: #46553e;
+}
+
+.contenidoIguazu {
+  color: black;
+}
+
+.imgIguazu {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fondoCosta {
+  background-image: url(../imagenes/costa/costafondodinal.jpeg);
+  background-size: cover;
+}
+
+.costaH1 {
+  text-align: center;
+  color: black;
+}
+
+.costaSubHacer {
+  color: black;
+}
+
+.costaSubCentro {
+  color: black;
+}
+
+.contenidoCosta {
+  color: black;
+}
+
+.imgCosta {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+main H1 {
+  text-align: center;
+}
+
+.viaje {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .imgBariloche {
+    gap: 0px;
+  }
+  .imgCalafate {
+    gap: 0px;
+  }
+  .imgCosta {
+    gap: 0px;
+  }
+  .imgIguazu {
+    gap: 0px;
+  }
+  .viaje {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .imgBariloche {
+    display: block;
+    gap: 20px;
+  }
+  .imgCalafate {
+    display: block;
+    gap: 20px;
+  }
+  .imgCosta {
+    display: block;
+  }
+  .imgIguazu {
+    display: block;
+    gap: 20px;
+  }
+  .viaje {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
