@@ -26,6 +26,8 @@
 
 .contenidoBariloche {
   color: black;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 1px black;
 }
 
 .imgBariloche {
@@ -93,7 +95,9 @@
 }
 
 .contenidoIguazu {
-  color: black;
+  color: green;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 1px green;
 }
 
 .imgIguazu {
@@ -140,8 +144,61 @@ main H1 {
   margin-top: 20px;
 }
 
+.viaje1 {
+  -webkit-backdrop-filter: blur(10px);
+  filter: blur(10px);
+}
+.viaje1 h1 {
+  vertical-align: top;
+}
+
+:hover.viaje1 {
+  transform: scale(1.1);
+  -webkit-backdrop-filter: blur(0px);
+  filter: blur(0px);
+}
+
+.viaje2 {
+  -webkit-backdrop-filter: blur(10px);
+  filter: blur(10px);
+}
+
+:hover.viaje2 {
+  -webkit-backdrop-filter: blur(0px);
+  filter: blur(0px);
+  transform: scale(1.1);
+}
+
+.viaje3 {
+  -webkit-backdrop-filter: blur(10px);
+  filter: blur(10px);
+}
+
+:hover.viaje3 {
+  -webkit-backdrop-filter: blur(0px);
+  filter: blur(0px);
+  transform: scale(1.1);
+}
+
+.viaje4 {
+  -webkit-backdrop-filter: blur(10px);
+  filter: blur(10px);
+}
+
+:hover.viaje4 {
+  -webkit-backdrop-filter: blur(0px);
+  filter: blur(0px);
+  transform: scale(1.1);
+}
+
 footer {
+  margin-top: 30px;
   text-align: center;
+  background-color: #ebf3e7;
+}
+footer div {
+  display: flex;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 1024px) {

@@ -2,136 +2,229 @@
 @import "../scss/utilidades/variables";
 @import "../scss/utilidades/mixin";
 
-.fondoNav{
+.fondoNav {
     background-color: #ebf3e7;
 }
-.fondoBariloche{
+
+.fondoBariloche {
 
     background-image: url(../imagenes/bariloche/sacamoto.jpeg);
     background-size: cover;
 }
-.barilocheH1{
+
+.barilocheH1 {
     text-align: center;
     color: $color-titulo;
 }
-.barilocheSubHacer{
+
+.barilocheSubHacer {
     color: $color-subtitulo;
-}
-.barilocheSubEsquiar{
-    color: $color-subtitulo;
-}
-.barilocheSubNaturaleza{
-    color: $color-subtitulo;
-}
-.contenidoBariloche{
-    color: black;
-}
-.imgBariloche{
-   @include flex;
-   margin-top: 20px;
 }
 
-.fondoCalafate{
+.barilocheSubEsquiar {
+    color: $color-subtitulo;
+}
+
+.barilocheSubNaturaleza {
+    color: $color-subtitulo;
+}
+
+.contenidoBariloche {
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 1px black;
+
+
+}
+
+.imgBariloche {
+    @include flex;
+    margin-top: 20px;
+}
+
+.fondoCalafate {
     background-image: url(../imagenes/calafate/fondocalafate.jpeg);
     background-size: cover;
 }
-.calafateH1{
+
+.calafateH1 {
     text-align: center;
     color: $color-titulo;
 }
-.calafateSubHacer{
+
+.calafateSubHacer {
     color: $color-subtitulo;
 }
-.calafateSubGlaciar{
+
+.calafateSubGlaciar {
     color: $color-subtitulo;
 }
-.calafateSubLagos{
+
+.calafateSubLagos {
     color: $color-subtitulo;
 }
-.calafateSubBosques{
+
+.calafateSubBosques {
     color: $color-subtitulo;
 }
-.contenidoCalafate{
+
+.contenidoCalafate {
     color: black;
 }
-.imgCalafate{
-   @include flex;
-   margin-top: 20px;
+
+.imgCalafate {
+    @include flex;
+    margin-top: 20px;
 }
-.fondoIguazu{
+
+.fondoIguazu {
 
     background-image: url(../imagenes/iguazu/iguazufondo2.jpeg);
     background-size: cover;
 }
-.iguazuH1{
+
+.iguazuH1 {
     text-align: center;
     color: $color-titulo;
 }
-.iguazuSubHacer{
+
+.iguazuSubHacer {
     color: $color-subtitulo;
 }
-.iguazuSubRuinas{
+
+.iguazuSubRuinas {
     color: $color-subtitulo;
 }
-.iguazuSubParque{
+
+.iguazuSubParque {
     color: $color-subtitulo;
 }
-.contenidoIguazu{
-    color: black;
+
+.contenidoIguazu {
+    color: green;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px green;
 }
-.imgIguazu{
+
+.imgIguazu {
     @include flex;
     margin-top: 20px;
 }
-.fondoCosta{
+
+.fondoCosta {
 
     background-image: url(../imagenes/costa/costafondodinal.jpeg);
     background-size: cover;
 }
-.costaH1{
+
+.costaH1 {
     text-align: center;
-    color: black;
-}
-.costaSubHacer{
-    color: black;
-}
-.costaSubCentro{
     color: black;
 }
 
-.contenidoCosta{
+.costaSubHacer {
     color: black;
 }
-.imgCosta{
+
+.costaSubCentro {
+    color: black;
+}
+
+.contenidoCosta {
+    color: black;
+}
+
+.imgCosta {
     @include flex;
     margin-top: 20px;
 }
-main H1{
+
+main H1 {
     text-align: center;
 }
-.viaje{
+
+.viaje {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 20px;
 }
-footer{
+
+.viaje1 {
+    -webkit-backdrop-filter: blur(10px);
+    filter: blur(10px);
+
+    h1 {
+        vertical-align: top;
+    }
+}
+
+:hover.viaje1 {
+    transform: scale(1.10);
+    -webkit-backdrop-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.viaje2 {
+    -webkit-backdrop-filter: blur(10px);
+    filter: blur(10px);
+}
+
+:hover.viaje2 {
+    -webkit-backdrop-filter: blur(0px);
+    filter: blur(0px);
+    transform: scale(1.10);
+}
+
+.viaje3 {
+    -webkit-backdrop-filter: blur(10px);
+    filter: blur(10px);
+}
+
+:hover.viaje3 {
+    -webkit-backdrop-filter: blur(0px);
+    filter: blur(0px);
+    transform: scale(1.10);
+}
+
+.viaje4 {
+    -webkit-backdrop-filter: blur(10px);
+    filter: blur(10px);
+}
+
+:hover.viaje4 {
+    -webkit-backdrop-filter: blur(0px);
+    filter: blur(0px);
+    transform: scale(1.10);
+}
+
+footer {
+    margin-top: 30px;
     text-align: center;
+    background-color: #ebf3e7;
+    div{
+       display: flex;
+       justify-content: space-around;
+    }
 }
 
-@media screen and (max-width: 1024px){
-    .imgBariloche{
+@media screen and (max-width: 1024px) {
+    .imgBariloche {
         gap: 0px;
     }
-    .imgCalafate{
+
+    .imgCalafate {
         gap: 0px;
     }
-    .imgCosta{
+
+    .imgCosta {
         gap: 0px;
     }
-    .imgIguazu{
+
+    .imgIguazu {
         gap: 0px;
     }
-    .viaje{
+
+    .viaje {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
         gap: 0px;
@@ -141,29 +234,30 @@ footer{
 
 
 
-@media screen and (max-width: 600px){ 
-    .imgBariloche{
+@media screen and (max-width: 600px) {
+    .imgBariloche {
         display: block;
         gap: 20px;
     }
-    .imgCalafate{
+
+    .imgCalafate {
         display: block;
         gap: 20px;
     }
-    .imgCosta{
+
+    .imgCosta {
         display: block;
     }
-    .imgIguazu{
+
+    .imgIguazu {
         display: block;
         gap: 20px;
     }
-    .viaje{
+
+    .viaje {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
         gap: 20px;
     }
-    
+
 }
-
-
-
