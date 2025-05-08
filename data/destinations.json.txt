@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Bariloche",
+    "price": 1200,
+    "category": "montaña",
+    "description": "Nieve, chocolate y paisajes increíbles.",
+    "image": "../imagenes/bariloche/bari4edit.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Cataratas del Iguazú",
+    "price": 900,
+    "category": "selva",
+    "description": "Una de las maravillas naturales del mundo.",
+    "image": "../imagenes/iguazu/iguazu4edit.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "El Calafate",
+    "price": 1500,
+    "category": "glaciares",
+    "description": "Descubre el imponente Glaciar Perito Moreno.",
+    "image": "../imagenes/calafate/cala5edit.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "Costa Atlántica",
+    "price": 800,
+    "category": "playa",
+    "description": "Playas doradas y gastronomía fresca.",
+    "image": "../imagenes/costa/costa3edit.jpeg"
+  }
+]

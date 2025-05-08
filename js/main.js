@@ -1,47 +1,35 @@
-// Datos de destinos (podrías mover esto a un archivo destinations.js)
-const destinations = [
-    {
-      id: 1,
-      name: "Bariloche",
-      price: 1200,
-      category: "montaña",
-      description: "Nieve, chocolate y paisajes increíbles.",
-      image: "../imgenes/bariloche/bari4edit.jpeg"
-    },
-    {
-      id: 2,
-      name: "Cataratas del Iguazú",
-      price: 900,
-      category: "selva",
-      description: "Una de las maravillas naturales del mundo.",
-      image: "../imagenes/iguazu/iguazu4edit.jpeg"
-    },
-    // Añade más destinos...
-  ];
-  
-  // Variables globales
-  let cart = [];
-  
-  // DOM Elements
-  const destinationsContainer = document.getElementById('destinos-container');
-  const cartItemsContainer = document.getElementById('cart-items');
-  const cartTotalElement = document.getElementById('cart-total');
-  const checkoutBtn = document.getElementById('checkout-btn');
-  
-  // Inicialización
-  document.addEventListener('DOMContentLoaded', () => {
-    renderDestinations(destinations);
-    setupEventListeners();
-  });
-  
-  // Renderizar destinos
-  function renderDestinations(destinations) {
-    destinationsContainer.innerHTML = '';
-    
-    destinations.forEach(destination => {
-      const card = document.createElement('div');
-      card.className = 'col-md-6 col-lg-4 mb-4';
-      card.innerHTML = `
+// Variables globales
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Elementos del DOM
+const destinationsContainer = document.getElementById('destinos-container');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotalElement = document.getElementById('cart-total');
+const checkoutBtn = document.getElementById('checkout-btn');
+
+// Cargar destinos con Fetch
+async function loadDestinations() {
+  try {
+    const response = await fetch('./data/destinations.json');
+    if (!response.ok) throw new Error("Error al cargar destinos");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    Swal.fire({
+      title: 'Error',
+      text: 'No se pudieron cargar los destinos',
+      icon: 'error'
+    });
+    return [];
+  }
+}
+
+// Renderizar destinos
+function renderDestinations(destinations) {
+  destinationsContainer.innerHTML = '';
+  destinations.forEach(destination => {
+    const card = `
+      <div class="col-md-6 col-lg-4 mb-4">
         <div class="card destination-card h-100">
           <img src="${destination.image}" class="card-img-top" alt="${destination.name}">
           <div class="card-body">
@@ -53,81 +41,122 @@ const destinations = [
             </button>
           </div>
         </div>
-      `;
-      destinationsContainer.appendChild(card);
-    });
+      </div>
+    `;
+    destinationsContainer.innerHTML += card;
+  });
+}
+
+// Manejar el carrito con LocalStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(destinationId, destinations) {
+  const destination = destinations.find(d => d.id === destinationId);
+  if (!destination) return;
+
+  const existingItem = cart.find(item => item.id === destinationId);
+  
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({...destination, quantity: 1});
   }
   
-  // Manejar carrito
-  function addToCart(destinationId) {
-    const destination = destinations.find(d => d.id === destinationId);
-    if (!destination) return;
-  
-    const existingItem = cart.find(item => item.id === destinationId);
-    
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({...destination, quantity: 1});
+  saveCart();
+  updateCart();
+}
+
+function updateCart() {
+  renderCartItems();
+  updateCartTotal();
+}
+
+function renderCartItems() {
+  cartItemsContainer.innerHTML = '';
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'list-group-item';
+    li.innerHTML = `
+      <span>${item.name} x${item.quantity}</span>
+      <span>$${item.price * item.quantity}</span>
+      <button class="btn btn-sm btn-danger remove-item" data-id="${item.id}">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+    cartItemsContainer.appendChild(li);
+  });
+}
+
+function updateCartTotal() {
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  cartTotalElement.textContent = `$${total}`;
+}
+
+// Event Listeners
+function setupEventListeners(destinations) {
+  destinationsContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-to-cart')) {
+      const destinationId = parseInt(e.target.getAttribute('data-id'));
+      addToCart(destinationId, destinations);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '¡Agregado al carrito!',
+        showConfirmButton: false,
+        timer: 1000
+      });
     }
-    
-    updateCart();
-  }
-  
-  function updateCart() {
-    renderCartItems();
-    updateCartTotal();
-  }
-  
-  function renderCartItems() {
-    cartItemsContainer.innerHTML = '';
-    
-    cart.forEach(item => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item';
-      li.innerHTML = `
-        <span>${item.name} x${item.quantity}</span>
-        <span>$${item.price * item.quantity}</span>
-        <button class="remove-item" data-id="${item.id}">
-          <i class="fas fa-trash"></i>
-        </button>
-      `;
-      cartItemsContainer.appendChild(li);
-    });
-  }
-  
-  function updateCartTotal() {
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotalElement.textContent = `$${total}`;
-  }
-  
-  // Event Listeners
-  function setupEventListeners() {
-    // Agregar al carrito
-    destinationsContainer.addEventListener('click', (e) => {
-      if (e.target.classList.contains('add-to-cart')) {
-        const destinationId = parseInt(e.target.getAttribute('data-id'));
-        addToCart(destinationId);
-      }
-    });
-  
-    // Eliminar del carrito
-    cartItemsContainer.addEventListener('click', (e) => {
-      if (e.target.closest('.remove-item')) {
-        const destinationId = parseInt(e.target.closest('.remove-item').getAttribute('data-id'));
-        cart = cart.filter(item => item.id !== destinationId);
+  });
+
+  cartItemsContainer.addEventListener('click', (e) => {
+    if (e.target.closest('.remove-item')) {
+      const destinationId = parseInt(e.target.closest('.remove-item').getAttribute('data-id'));
+      cart = cart.filter(item => item.id !== destinationId);
+      saveCart();
+      updateCart();
+    }
+  });
+
+  checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Carrito vacío',
+        text: 'Agrega destinos para continuar'
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: '¿Confirmar reserva?',
+      html: `Total: <b>$${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</b>`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Pagar',
+      cancelButtonText: 'Seguir viendo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: '¡Reserva confirmada!',
+          text: 'Recibirás un email con los detalles',
+          icon: 'success'
+        });
+        cart = [];
+        saveCart();
         updateCart();
       }
     });
-  
-    // Checkout
-    checkoutBtn.addEventListener('click', () => {
-      if (cart.length === 0) {
-        alert('Tu carrito está vacío');
-        return;
-      }
-      alert(`Reserva confirmada! Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`);
-      cart = [];
-      updateCart();
-    });
+  });
+}
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', async () => {
+  const destinations = await loadDestinations();
+  if (destinations.length > 0) {
+    renderDestinations(destinations);
+    setupEventListeners(destinations);
   }
+  updateCart(); // Cargar carrito guardado
+});
